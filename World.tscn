@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbn7mrvfi57lr"]
+
+[ext_resource type="PackedScene" uid="uid://4cu0bmq81uu3" path="res://hud.tscn" id="1_mu4yf"]
+[ext_resource type="Script" path="res://World.cs" id="1_yemm7"]
+[ext_resource type="PackedScene" uid="uid://ct4gdpkiec16t" path="res://Player.tscn" id="2_kflvl"]
+[ext_resource type="PackedScene" uid="uid://ddc3sd8yfffl8" path="res://enemy.tscn" id="4_yhrfp"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_yemm7")
+
+[node name="Enemy" parent="." instance=ExtResource("4_yhrfp")]
+
+[node name="Player" parent="." instance=ExtResource("2_kflvl")]
+position = Vector2(577, 323)
+
+[node name="HUD" parent="." instance=ExtResource("1_mu4yf")]
+position = Vector2(-4, -3)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://4cu0bmq81uu3"]
+
+[ext_resource type="Texture2D" uid="uid://do1k35un8yuf8" path="res://res/heart.png" id="1_qk1eu"]
+[ext_resource type="Script" path="res://Hud.cs" id="1_tpwi6"]
+
+[node name="HUD" type="Node2D"]
+script = ExtResource("1_tpwi6")
+
+[node name="Health_1" type="Sprite2D" parent="."]
+position = Vector2(420, 591)
+scale = Vector2(0.364286, 0.448)
+texture = ExtResource("1_qk1eu")
+
+[node name="Health_2" type="Sprite2D" parent="."]
+position = Vector2(756, 590)
+scale = Vector2(0.364286, 0.448)
+texture = ExtResource("1_qk1eu")
+
+[node name="Health_3" type="Sprite2D" parent="."]
+position = Vector2(589, 591)
+scale = Vector2(0.364286, 0.448)
+texture = ExtResource("1_qk1eu")
