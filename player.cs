@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class player : Area2D 
+public partial class player : CharacterBody2D 
 {
-	int SPEED = 10;
+	int SPEED = 850;
 	public int HEALTH = 3;
 	SignalSingleton sig;
 
@@ -13,7 +13,9 @@ public partial class player : Area2D
 	
 	public override void _Process(double delta){
 		// Capture a normalized vector of the input
-		Vector2 vec = Input.GetVector("move_left", "move_right", "move_up", "move_down");
-		this.Position += vec * SPEED;
+		Vector2 velocity = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+	
+		Velocity = velocity * SPEED;
+		MoveAndSlide();
 	}
 }

@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbn7mrvfi57lr"]
+[gd_scene load_steps=8 format=3 uid="uid://cbn7mrvfi57lr"]
 
 [ext_resource type="PackedScene" uid="uid://4cu0bmq81uu3" path="res://hud.tscn" id="1_mu4yf"]
 [ext_resource type="Script" path="res://World.cs" id="1_yemm7"]
 [ext_resource type="PackedScene" uid="uid://ct4gdpkiec16t" path="res://Player.tscn" id="2_kflvl"]
 [ext_resource type="PackedScene" uid="uid://ddc3sd8yfffl8" path="res://enemy.tscn" id="4_yhrfp"]
+[ext_resource type="Texture2D" uid="uid://cvigwpw3vmxkn" path="res://res/background.png" id="5_d3ou6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_blbr3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfge0"]
+size = Vector2(19.3408, 375.435)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_yemm7")
@@ -15,3 +21,35 @@ position = Vector2(577, 323)
 
 [node name="HUD" parent="." instance=ExtResource("1_mu4yf")]
 position = Vector2(-4, -3)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(229, -336)
+scale = Vector2(0.2958, 0.2782)
+physics_material_override = SubResource("PhysicsMaterial_blbr3")
+
+[node name="WorldTexture" type="Sprite2D" parent="StaticBody2D"]
+z_index = -1
+position = Vector2(3329.95, 3091.3)
+texture = ExtResource("5_d3ou6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1052.23, 2086.63)
+scale = Vector2(6.38, 6.38)
+shape = SubResource("RectangleShape2D_qfge0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(196.078, 977.714)
+rotation = 1.5708
+scale = Vector2(6.38, 6.38)
+shape = SubResource("RectangleShape2D_qfge0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1463.83, 2106.4)
+scale = Vector2(6.38, 6.38)
+shape = SubResource("RectangleShape2D_qfge0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(201.956, 3263.84)
+rotation = 1.5708
+scale = Vector2(6.38, 6.38)
+shape = SubResource("RectangleShape2D_qfge0")
