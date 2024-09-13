@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc3x70pv03ami"]
+
+[ext_resource type="Script" path="res://enemy_bullet.cs" id="1_5r7hr"]
+[ext_resource type="Texture2D" uid="uid://cdt68qqx38s21" path="res://res/bullet.png" id="2_imew4"]
+[ext_resource type="AudioStream" uid="uid://cti3p5epi8f0x" path="res://res/sfx/BulletFire.wav" id="3_it6yc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mcs0"]
+size = Vector2(21, 83)
+
+[node name="enemy_bullet" type="Node2D"]
+
+[node name="Bullet" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("1_5r7hr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
+position = Vector2(11, 40)
+shape = SubResource("RectangleShape2D_5mcs0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bullet/CollisionShape2D"]
+position = Vector2(0.5, -0.5)
+rotation = 1.5708
+scale = Vector2(0.184156, 0.185826)
+texture = ExtResource("2_imew4")
+
+[node name="BulletShootSfx" type="AudioStreamPlayer2D" parent="Bullet"]
+scale = Vector2(0.986568, 1.30114)
+stream = ExtResource("3_it6yc")
+volume_db = -18.451

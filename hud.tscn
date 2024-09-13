@@ -1,40 +1,101 @@
-[gd_scene load_steps=3 format=3 uid="uid://4cu0bmq81uu3"]
+[gd_scene load_steps=6 format=3 uid="uid://dgtsqegte6mvu"]
 
 [ext_resource type="Script" path="res://HudDisplay.cs" id="1_bt4nl"]
+[ext_resource type="Texture2D" uid="uid://b7xuesu8ih30o" path="res://res/key.png" id="2_uk4aa"]
+[ext_resource type="Texture2D" uid="uid://do1k35un8yuf8" path="res://res/heart.png" id="3_mn338"]
+[ext_resource type="AudioStream" uid="uid://bmjjikb8peil5" path="res://res/sfx/PlayerDeath.wav" id="3_rfwnl"]
 
-[sub_resource type="CSharpScript" id="CSharpScript_w0qja"]
-script/source = "using Godot;
-using System;
-
-public partial class Hud : Node2D
-{
-
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-			
-	}
-}
-"
+[sub_resource type="SystemFont" id="SystemFont_2bu2u"]
+subpixel_positioning = 0
 
 [node name="HUD" type="Node2D"]
-script = SubResource("CSharpScript_w0qja")
+process_mode = 3
+position = Vector2(3, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("1_bt4nl")
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="GameOver" type="Node2D" parent="CanvasLayer"]
+process_mode = 3
+position = Vector2(3, 3)
 
-[node name="HealthLabel" type="Label" parent="CanvasLayer"]
-offset_left = 3.0
-offset_top = 623.0
-offset_right = 105.0
-offset_bottom = 646.0
-text = "Health: "
+[node name="Label" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 432.0
+offset_top = 16.0
+offset_right = 985.0
+offset_bottom = 311.0
+theme_override_fonts/font = SubResource("SystemFont_2bu2u")
+theme_override_font_sizes/font_size = 50
+text = "Game Over!"
+
+[node name="QuitLabel" type="Label" parent="CanvasLayer/GameOver"]
+offset_left = 478.0
+offset_top = 84.0
+offset_right = 672.0
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 25
+text = "Press 'q' to quit."
+
+[node name="Pause" type="Node2D" parent="CanvasLayer"]
+position = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause"]
+offset_left = 316.0
+offset_top = 80.0
+offset_right = 869.0
+offset_bottom = 375.0
+theme_override_fonts/font = SubResource("SystemFont_2bu2u")
+theme_override_font_sizes/font_size = 50
+text = "Paused
+SPACE to resume"
+horizontal_alignment = 1
+
+[node name="Items" type="Node2D" parent="CanvasLayer"]
+position = Vector2(3, 3)
+
+[node name="Key" type="Sprite2D" parent="CanvasLayer/Items"]
+position = Vector2(1112, 606)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_uk4aa")
+
+[node name="Tip" type="Label" parent="CanvasLayer/Items"]
+offset_left = 926.0
+offset_top = 610.0
+offset_right = 1119.0
+offset_bottom = 633.0
+text = "Find the key"
+
+[node name="Enemy" type="Label" parent="CanvasLayer/Items"]
+offset_left = 695.225
+offset_top = 609.29
+offset_right = 890.225
+offset_bottom = 641.24
+scale = Vector2(0.950383, 0.993603)
+text = "You must kill one enemy."
+
+[node name="DeathSfx" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("3_rfwnl")
+
+[node name="HealthBar" type="Node2D" parent="CanvasLayer"]
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/HealthBar"]
+offset_left = 64.0
+offset_top = 624.0
+offset_right = 166.0
+offset_bottom = 647.0
+text = "Health: 3"
+
+[node name="Health1" type="Sprite2D" parent="CanvasLayer/HealthBar"]
+position = Vector2(34, 596)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mn338")
+
+[node name="Health2" type="Sprite2D" parent="CanvasLayer/HealthBar"]
+position = Vector2(103, 595)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mn338")
+
+[node name="Health3" type="Sprite2D" parent="CanvasLayer/HealthBar"]
+position = Vector2(170, 595)
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("3_mn338")

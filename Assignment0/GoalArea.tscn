@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3ao6jlwsnqkl"]
+
+[ext_resource type="Script" path="res://GoalArea.cs" id="1_bldud"]
+[ext_resource type="Texture2D" uid="uid://u6yn80g7r7d6" path="res://res/Door.png" id="1_qwyj1"]
+[ext_resource type="AudioStream" uid="uid://bvxe2r7oo0xy0" path="res://res/sfx/Win.wav" id="3_2b03b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l8jn"]
+size = Vector2(111, 131)
+
+[node name="GoalArea" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(78, -54)
+scale = Vector2(1, 0.981498)
+script = ExtResource("1_bldud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(134, 111)
+shape = SubResource("RectangleShape2D_7l8jn")
+
+[node name="Door" type="Sprite2D" parent="Area2D"]
+position = Vector2(136, 106)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_qwyj1")
+
+[node name="WinSfx" type="AudioStreamPlayer2D" parent="Area2D"]
+stream = ExtResource("3_2b03b")
+
+[node name="ShowWin" type="Timer" parent="Area2D"]
+wait_time = 2.3
+
+[node name="WinLabel" type="Label" parent="Area2D"]
+offset_left = 251.625
+offset_top = 55.0179
+offset_right = 699.625
+offset_bottom = 186.018
+scale = Vector2(0.839946, 0.88926)
+theme_override_font_sizes/font_size = 46
+text = "You Won!
+Thanks for playing :)
+Please press 'q' to exit."
+horizontal_alignment = 1

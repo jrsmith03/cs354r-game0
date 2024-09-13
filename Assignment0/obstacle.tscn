@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmdmi23cxmpe"]
+
+[ext_resource type="Texture2D" uid="uid://ci7jfhugl64sn" path="res://res/rock.webp" id="1_nnydc"]
+
+[node name="Obstacle" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Rock" type="Sprite2D" parent="Area2D"]
+position = Vector2(58, 58)
+scale = Vector2(0.0536458, 0.0536458)
+texture = ExtResource("1_nnydc")
